@@ -2,6 +2,7 @@ package com.example.gestionprojet.bo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 )
 
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+@ToString(exclude = "liClient")
 public class Projet {
     @Id
     @GeneratedValue
@@ -26,11 +28,11 @@ public class Projet {
     @Column
     private LocalDate dateFin;
     @ManyToMany
+    List<Employe> liEmployeAffectes;
+    @ManyToMany
     @JoinTable(name = "Client_Projet",
             joinColumns = @JoinColumn( name = "idProjet" ),
             inverseJoinColumns = @JoinColumn( name = "idClient" ) )
-    List<Employe> liEmployeAffectes;
-    @ManyToMany
     List<Client> liClient;
 
     

@@ -2,7 +2,7 @@ package com.example.gestionprojet.bll.manager;
 
 import java.util.List;
 
-public interface ManagerGenericInterface<T> {
+public interface ManagerGeneriqueInterface<T> {
     List<T> getAll();
     T getById(Long id);
     void addOne(T objet);

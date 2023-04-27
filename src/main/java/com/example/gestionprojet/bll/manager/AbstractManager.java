@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public abstract class AbstractManager <T, R extends CrudRepository<T, Long>> implements ManagerGenericInterface {
+public abstract class AbstractManager <T, R extends CrudRepository<T, Long>> implements ManagerGeneriqueInterface<T> {
 
     @Autowired
     protected R repo;
@@ -16,8 +16,8 @@ public abstract class AbstractManager <T, R extends CrudRepository<T, Long>> imp
     }
 
     @Override
-    public Object getById(Long id) {
-        return repo.findById(id);
+    public T getById(Long id) {
+        return (T) repo.findById(id);
     }
 
     @Override
