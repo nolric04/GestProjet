@@ -102,6 +102,6 @@ public class GestionProjetApplication implements CommandLineRunner {
         });
 //        employeManager.getAll().forEach(System.out::println);
 //        projectTaskManager.getAll().forEach(System.out::println);
-        System.out.println(calculatorEmploye.calculCoutHoraire(employe));
+        System.out.println(calculatorEmploye.calculCoutJournalier(employe));
     }
 }

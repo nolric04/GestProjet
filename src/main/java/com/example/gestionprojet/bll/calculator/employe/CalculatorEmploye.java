@@ -1,10 +1,8 @@
 package com.example.gestionprojet.bll.calculator.employe;
 
 import com.example.gestionprojet.bo.Employe;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +27,12 @@ public class CalculatorEmploye {
      * @param employe
      * @return
      */
-    public double calculMoyenneTauxHoraire(List<Employe> employe){
+    public double calculMoyenneTauxJournalier(List<Employe> employe){
         Double moyenne = 0.0;
         for (Employe emp : employe) {
             moyenne += emp.getSalaire();
         }
-        return Math.round((moyenne/employe.size()/7)*100.0)/100.0;
+        return Math.round((moyenne/employe.size()/22)*100.0)/100.0;
     }
 
     /**
@@ -42,10 +40,10 @@ public class CalculatorEmploye {
      * @param employe
      * @return
      */
-    public double calculCoutHoraire(Employe employe){
+    public double calculCoutJournalier(Employe employe){
         Double cout = 0.0;
         Double tauxHoraire= 0.0;
-        tauxHoraire += calculMoyenneTauxHoraire(new ArrayList<Employe>(){
+        tauxHoraire += calculMoyenneTauxJournalier(new ArrayList<Employe>(){
                 {
                     add(employe);
                 }

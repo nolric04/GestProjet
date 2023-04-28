@@ -11,7 +11,7 @@ public class CalculatorTask {
     @Autowired
     CalculatorEmploye calculatorEmploye;
     public void calculeCoutTache(ProjectTask projectTask){
-        Double coutMoyen = calculatorEmploye.calculMoyenneTauxHoraire(projectTask.getLiEmployeAffectes());
+        Double coutMoyen = calculatorEmploye.calculMoyenneTauxJournalier(projectTask.getLiEmployeAffectes());
         projectTask.setCoutTache(coutMoyen);
     }
 }
