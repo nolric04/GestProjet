@@ -19,12 +19,8 @@ public class ManagerEntrepriseTest {
         Entreprise e = new Entreprise();
         e.setNomEntreprise("NouveauNom");
         e.setFraisStructure(150.0);
-        Entreprise e1 = new Entreprise();
-        e.setNomEntreprise("NouveauNom2");
-        e.setFraisStructure(150.0);
         manager.addOne(e);
-        manager.addOne(e1);
 
-        assertEquals(manager.getAll().get(0).toString(), e.toString());
+        assertEquals(e.toString(), manager.getAll().get(0).toString());
     }
 }

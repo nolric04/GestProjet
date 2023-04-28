@@ -1,14 +1,19 @@
 package com.example.gestionprojet.bo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Inheritance(
         strategy = InheritanceType.JOINED
 )
@@ -27,13 +32,13 @@ public class Projet {
     private LocalDate dateDebut;
     @Column
     private LocalDate dateFin;
-    @ManyToMany
-    List<Employe> liEmployeAffectes;
+    @OneToMany(fetch = FetchType.EAGER)
+    List<ProjectTask> liTaches = new ArrayList<>();
     @ManyToMany
     @JoinTable(name = "Client_Projet",
             joinColumns = @JoinColumn( name = "idProjet" ),
             inverseJoinColumns = @JoinColumn( name = "idClient" ) )
-    List<Client> liClient;
+    List<Client> liClient = new ArrayList<>();
 
     
 }

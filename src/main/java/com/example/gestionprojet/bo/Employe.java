@@ -1,13 +1,17 @@
 package com.example.gestionprojet.bo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Inheritance(
         strategy = InheritanceType.JOINED
 )
@@ -26,4 +30,6 @@ public class Employe {
     private String telephone;
     @Column
     private Double salaire;
+    @ManyToOne
+    private Entreprise entreprise;
 }
