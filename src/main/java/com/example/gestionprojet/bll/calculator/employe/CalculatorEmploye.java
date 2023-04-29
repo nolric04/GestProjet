@@ -10,7 +10,7 @@ import java.util.List;
 public class CalculatorEmploye implements CalculatorEmployeInterface{
 
     /**
-     *
+     *  Calcule la moyenne par mois du salaire de l'employé
      * @param employe
      * @return
      */
@@ -24,8 +24,8 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
     }
 
     /**
-     *
-     * @param employe
+     *  Calcule le salaire par Jours de l'employé
+     * @param employe unlimited Employe Param
      * @return
      */
     @Override
@@ -37,7 +37,7 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
         return Math.round((moyenne/employe.length/22)*100.0)/100.0;
     }
     /**
-     *
+     *   Calcule le salaire par Jours de l'employé
      * @param employe
      * @return
      */
@@ -47,7 +47,12 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
     }
 
     /**
-     *
+     *Calcule le prix Journalier d'un employé.
+     * Prend en compte :
+     *      - le Salaire
+     *      - les charges
+     *      - les Frais de Structure
+     *      - les frais de répercusion de Formations
      * @param employe
      * @return
      */
