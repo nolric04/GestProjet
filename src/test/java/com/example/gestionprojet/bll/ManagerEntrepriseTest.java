@@ -15,7 +15,7 @@ public class ManagerEntrepriseTest {
     @Autowired
     EntrepriseManagerInterface manager;
     @Test
-    void addNewEntreprise() {
+    void addNewEntrepriseTest() {
         Entreprise e = new Entreprise();
         e.setNomEntreprise("NouveauNom");
         e.setFraisStructure(150.0);

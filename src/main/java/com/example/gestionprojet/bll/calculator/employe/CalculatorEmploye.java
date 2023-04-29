@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CalculatorEmploye {
+public class CalculatorEmploye implements CalculatorEmployeInterface{
 
     /**
      *
      * @param employe
      * @return
      */
-    public double calculMoyenneParMois(List<Employe> employe){
+    @Override
+    public Double calculMoyenneParMois(List<Employe> employe){
         Double moyenne = 0.0;
         for (Employe emp : employe) {
             moyenne += emp.getSalaire();
@@ -27,12 +28,22 @@ public class CalculatorEmploye {
      * @param employe
      * @return
      */
-    public double calculMoyenneTauxJournalier(List<Employe> employe){
+    @Override
+    public Double calculMoyenneTauxJournalier(Employe... employe){
         Double moyenne = 0.0;
         for (Employe emp : employe) {
             moyenne += emp.getSalaire();
         }
-        return Math.round((moyenne/employe.size()/22)*100.0)/100.0;
+        return Math.round((moyenne/employe.length/22)*100.0)/100.0;
+    }
+    /**
+     *
+     * @param employe
+     * @return
+     */
+    @Override
+    public Double calculMoyenneTauxJournalier(List<Employe> employe){
+        return calculMoyenneTauxJournalier(employe.toArray(new Employe[employe.size()]));
     }
 
     /**
@@ -40,7 +51,8 @@ public class CalculatorEmploye {
      * @param employe
      * @return
      */
-    public double calculCoutJournalier(Employe employe){
+    @Override
+    public Double calculCoutJournalier(Employe employe){
         Double cout = 0.0;
         Double tauxHoraire= 0.0;
         tauxHoraire += calculMoyenneTauxJournalier(new ArrayList<Employe>(){
@@ -54,5 +66,7 @@ public class CalculatorEmploye {
             cout += employe.getEntreprise().getRépercusionPrixFormation();
         return cout;
     }
+
+
 
 }
