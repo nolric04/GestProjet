@@ -19,7 +19,7 @@ public abstract class AbstractManager <T, R extends CrudRepository<T, Long>> imp
 
     @Override
     public T getById(Long id) {
-        return (T) repo.findById(id);
+        return (T) repo.findById(id).get();
     }
 
     @Override

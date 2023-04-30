@@ -2,6 +2,7 @@ package com.example.gestionprojet.ihm.ws;
 
 import com.example.gestionprojet.bll.manager.entreprise.EntrepriseManagerInterface;
 import com.example.gestionprojet.bo.Entreprise;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +16,9 @@ public class WsEntreprise {
     EntrepriseManagerInterface entrepriseManager;
 
     @PostMapping("/add")
-    public void newEntreprise(Entreprise e){
+    public String newEntreprise(@RequestBody Entreprise e){
         entrepriseManager.add(e);
+        return "ajout effectué";
     }
 
     @GetMapping("/getall")
@@ -25,12 +27,18 @@ public class WsEntreprise {
     }
 
     @GetMapping("/get/{id}")
-    public void getOneEntreprise(long id){
-        entrepriseManager.getById(id);
+    public Entreprise getOneEntreprise(@PathVariable("id") Long id){
+        return entrepriseManager.getById(1L);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteOneEntreprise(Long id){
-        entrepriseManager.delete(id);
+    public String deleteOneEntreprise(@PathVariable("id") Long id){
+        try{
+            entrepriseManager.delete(id);
+            return "suppression effectuée";
+        }catch(Exception e){
+            return "la suppression n'a pu être effectuée";
+        }
+
     }
 }
