@@ -21,6 +21,6 @@ public class ManagerEntrepriseTest {
         e.setFraisStructure(150.0);
         manager.addOne(e);
 
-        assertEquals(e.toString(), manager.getAll().get(0).toString());
+        assertEquals(e.toString(), manager.getAll().get(1).toString());
     }
 }
