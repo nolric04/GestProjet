@@ -29,7 +29,7 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
      * @return
      */
     @Override
-    public Double calculMoyenneTauxJournalier(Employe... employe){
+    public Double calculMoyenneSalaireJournalier(Employe... employe){
         Double moyenne = 0.0;
         for (Employe emp : employe) {
             moyenne += emp.getSalaire();
@@ -42,8 +42,8 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
      * @return
      */
     @Override
-    public Double calculMoyenneTauxJournalier(List<Employe> employe){
-        return calculMoyenneTauxJournalier(employe.toArray(new Employe[employe.size()]));
+    public Double calculMoyenneSalaireJournalier(List<Employe> employe){
+        return calculMoyenneSalaireJournalier(employe.toArray(new Employe[employe.size()]));
     }
 
     /**
@@ -60,12 +60,11 @@ public class CalculatorEmploye implements CalculatorEmployeInterface{
     public Double calculCoutJournalier(Employe employe){
         Double cout = 0.0;
         Double tauxHoraire= 0.0;
-        tauxHoraire += calculMoyenneTauxJournalier(new ArrayList<Employe>(){
+        tauxHoraire += calculMoyenneSalaireJournalier(new ArrayList<Employe>(){
                 {
                     add(employe);
                 }
             });
-        System.out.println(tauxHoraire);
             cout +=tauxHoraire *2;
             cout += employe.getEntreprise().getFraisStructure();
             cout += employe.getEntreprise().getRépercusionPrixFormation();

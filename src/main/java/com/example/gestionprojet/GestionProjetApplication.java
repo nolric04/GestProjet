@@ -103,7 +103,7 @@ public class GestionProjetApplication implements CommandLineRunner {
 //        employeManager.getAll().forEach(System.out::println);
 //        projectTaskManager.getAll().forEach(System.out::println);
 //        System.out.println(calculatorEmploye.calculCoutJournalier(employe));
-        System.out.println(calculatorEmploye.calculMoyenneTauxJournalier(new ArrayList<Employe>(){
+        System.out.println(calculatorEmploye.calculMoyenneSalaireJournalier(new ArrayList<Employe>(){
             {
                 add(employe);
                 add(employe1);

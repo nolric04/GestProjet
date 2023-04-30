@@ -12,7 +12,7 @@ public class CalculatorTask {
     CalculatorEmploye calculatorEmploye;
 
     public void calculeCoutTache(ProjectTask projectTask){
-        Double coutMoyen = calculatorEmploye.calculMoyenneTauxJournalier(projectTask.getLiEmployeAffectes());
+        Double coutMoyen = calculatorEmploye.calculMoyenneSalaireJournalier(projectTask.getLiEmployeAffectes());
         Double coutEstime = coutMoyen*projectTask.getNbJourEstime();
         projectTask.setCoutTache(coutEstime);
     }
